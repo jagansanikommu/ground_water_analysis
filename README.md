@@ -54,7 +54,7 @@ cd ground_water_analysis
 pip install -r requirements.txt
 
 
-4. Run the Jupyter notebooks in the `notebooks` folder to perform the data analysis and generate visualizations.
+4. Run the app.py in the `app.py` file to perform the data analysis and generate visualizations.
 
 5. The generated plots will be saved in the `plots` folder.
 

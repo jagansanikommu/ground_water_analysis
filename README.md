@@ -16,7 +16,7 @@ The dataset is available in the file `groundwater_data.csv`. It is a comma-separ
 
 The project structure is organized as follows:
 
-- `data`: This folder contains the dataset file `groundwater_data.csv`.
+- `data`: This folder contains the dataset file `Data.csv`.
 - `notebooks`: This folder contains Jupyter notebooks for data cleaning, exploratory analysis, and visualization.
 - `plots`: This folder stores the generated plots and visualizations.
 - `README.md`: This file provides an overview of the project and its components.

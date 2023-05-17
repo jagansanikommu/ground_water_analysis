@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataFrame Table</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <h1 style="border: crimson; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bolder; font-size:275%; font-optical-sizing:auto; color: rgb(39, 30, 73);">Analysis of Ground Water Level in Indian States</h1>
+    <br>
+    <section>
+    <div class="data" style="width: fit-content; align-items: center;">    
+    <p>The dataset is provided by <a href="https://data.gov.in/">https://data.gov.in</a>. The dataset is open for analysis and research.</p>
+    <p>
+        The dataset used in this groundwater analysis project is sourced from various reliable sources, including government agencies, environmental organizations, and research institutions. The data provides valuable insights into the state of groundwater resources and their quality across different regions.
+        <br><br>
+        It includes information on groundwater levels, water table fluctuations, groundwater recharge rates, aquifer properties, and chemical composition analysis. The dataset also incorporates geographical and geological factors, climate data, and land use patterns to assess the overall groundwater situation.
+        <br><br>
+        The availability of this open dataset allows researchers, policymakers, and environmentalists to analyze and understand the current state of groundwater resources. By studying the data, it becomes possible to identify areas of concern, detect trends, and develop strategies for sustainable groundwater management and conservation.
+        <br><br>
+        This project aims to leverage this dataset to gain insights into groundwater dynamics, identify areas prone to water scarcity, assess the impact of human activities on groundwater quality, and propose measures to mitigate potential risks associated with overexploitation or contamination.
+      </p>
+</div>
+    <a href="{{ url_for('toggle1') }}">
+        {% if session.get('show_plots1', False) %}
+        <button class="button"><span class="spinner"></span>Hide Raw Data</button>
+        {% else %}
+        <button class="button"><span class="spinner"></span>Show Raw Data</button>
+        {% endif %}
+    </a>
+    </section>
+        {% if session.get('show_plots1', False) %}
+            {%if plot_data !=None%}
+            <h1>Raw Data</h1>
+            <div class="tbl-header">
+                {{ plot_data | safe }}
+            </div>
+            {%endif%}
+        {% endif %}
+    
+
+        <section class="data">
+                <h2>Feature-to-Feature Relationship</h2>
+                <p>
+                  When analyzing a dataset with numerous numerical features, plotting all the features in a seaborn pairplot can be time-consuming and challenging to interpret. Instead, we can focus on exploring the relationships between specific variables to gain insights and explain their connections using common sense.
+                </p>
+                <p>
+                  By examining feature-to-feature relationships, we can identify potential correlations or dependencies between variables. This approach allows us to discover meaningful associations and understand how one feature may influence or be influenced by another. It also enables us to uncover patterns and uncover hidden connections that may not be immediately apparent.
+                </p>
+            <a href="{{ url_for('toggle2') }}">
+                {% if session.get('show_plots2', False) %}
+                <button class="button"><span class="spinner"></span>Hide Plot</button>
+                {% else %}
+                <button class="button"><span class="spinner"></span>Show Plot</button>
+                {% endif %}
+            </a>
+        </section>
+        {% if session.get('show_plots2', False) %}
+            <h1>Feature to feature relationship</h1>
+            <div class="tbl-header">
+                <img src="{{ url_for('static', filename='plot1.png') }}">
+            </div>
+        {% endif %}
+
+
+        <section class="data">
+            <h2>Exploratory Data Analysis (EDA)</h2>
+            <p>
+              In this section, we will analyze the dataset related to Total Recharge, Extraction, Future Availability, and Annual Reserve by States in India.
+              The dataset provides valuable information about the groundwater resources and their utilization across different states in India.
+              By conducting an exploratory data analysis (EDA), we aim to gain insights and uncover patterns in the data that can help us understand the current status and future availability of groundwater resources.
+            </p>
+          
+            <h3>Data Description</h3>
+            <ul class="data-list">
+              <li><strong>Total Recharge:</strong> Represents the total amount of groundwater recharge in each state.</li>
+              <li><strong>Extraction:</strong> Indicates the total groundwater extraction in each state.</li>
+              <li><strong>Future Availability:</strong> Estimates the projected availability of groundwater resources in the future based on current trends.</li>
+              <li><strong>Annual Reserve:</strong> Refers to the annual reserve of groundwater resources in each state.</li>
+            </ul>
+          
+            <p>
+              By analyzing these variables, we can gain insights into the current utilization of groundwater resources, identify areas of high extraction or recharge, and assess the future availability of groundwater in different states.
+              This information can be valuable for policymakers, researchers, and stakeholders involved in water resource management and planning.
+            </p>
+            <a href="{{ url_for('toggle3') }}">
+                {% if session.get('show_plots3', False) %}
+                <button class="button"><span class="spinner"></span>Hide EDA</button>
+                {% else %}
+                <button class="button"><span class="spinner"></span>Show EDA</button>
+                {% endif %}
+            </a>
+          </section>
+          {% if session.get('show_plots3', False) %}
+            {%if feat_data !=None%}
+            <h1>Exploratory data Analysis (EDA)</h1>
+            <div class="tbl-header">
+                {{ feat_data | safe }}
+            </div>
+            {%endif%}
+        {% endif %}
+
+
+        <section class="data">
+            <h2>Annual Reserve of Groundwater by States</h2>
+            <p>The figure below displays the annual reserve of groundwater by state in the dataset. The green bars indicate a positive annual reserve, while the red bars indicate a negative annual reserve.</p>
+            
+            {% if session.get('show_plots4', False) %}
+            <h1>Feature to feature relationship</h1>
+            <div class="tbl-header">
+                <img src="{{ url_for('static', filename='plot2.png') }}">
+            </div>
+            {% endif %}
+            <a href="{{ url_for('toggle4') }}">
+                {% if session.get('show_plots4', False) %}
+                <button class="button"><span class="spinner"></span>Hide Plot</button>
+                {% else %}
+                <button class="button"><span class="spinner"></span>Show Plot</button>
+                {% endif %}
+            </a>
+            <p>By examining the graph, we can observe the variation in annual reserve across different states. States with green bars have a positive annual reserve, indicating a surplus of groundwater resources, while states with red bars have a negative annual reserve, indicating a deficit of groundwater resources.</p>
+            
+            <p>This information is crucial for understanding the overall availability and sustainability of groundwater resources in each state. It allows us to identify regions that may be experiencing water scarcity or facing the risk of depletion. Such insights can guide policymakers, water resource managers, and researchers in developing strategies to ensure the effective management and conservation of groundwater resources.</p>
+          </section>
+          
+          <section class="data">
+            <h2>Groundwater Extraction vs Availability</h2>
+            <p>The analysis below examines the relationship between groundwater extraction and availability across different states. It reveals the critical situation in Haryana, Rajasthan, Punjab, and Delhi, where groundwater extraction is nearly equal to the availability.</p>
+            
+            <div class="plot-container">
+              <img src="{{ url_for('static', filename='plot3.png') }}" alt="Extraction vs Availability Plot">
+            </div>
+            
+            <p>Based on the analysis, if the distribution and management of groundwater resources are not planned effectively in these states, there is a high risk of severe water shortages in the future. The close proximity of extraction and availability values indicates a potential imbalance between water demand and supply.</p>
+            
+            <p>Addressing this critical zone is crucial to ensure sustainable water management and prevent the depletion of groundwater resources. It calls for the implementation of effective policies, water conservation measures, and the development of alternative water sources in these regions.</p>
+          </section>
+          
+          <section class="data">
+            <h2>Future Groundwater Availability in Different States in India</h2>
+            <p>The analysis focuses on the projected future groundwater availability in various states across India. It should be noted that no data is available for Arunachal Pradesh. However, other states such as Assam, Uttar Pradesh, Madhya Pradesh, and Bihar show a higher future reserve of groundwater.</p>
+            
+            <p>This information is crucial for understanding the potential water resources in different states and can aid in decision-making for water management and planning. The higher future reserve in these states suggests the possibility of a more sustainable water supply in the coming years.</p>
+            
+            <p>It is important to monitor and manage groundwater resources effectively in these states to ensure their sustainable utilization. By implementing appropriate conservation measures, water policies, and strategic planning, it is possible to maintain a balance between water demand and availability for future generations.</p>
+            <div class="plot-container">
+                <img src="{{ url_for('static', filename='plot4.png') }}" alt="Extraction vs Availability Plot">
+              </div>
+        </section>
+          
+        <section class="data">
+            <h2>Annual Groundwater Allocation to Districts in Each State</h2>
+            <p>In this analysis, we examine the annual allocation of groundwater to districts within each state. This information provides insights into the distribution and utilization of groundwater resources at a more localized level.</p>
+            
+            <p>The allocation of groundwater resources to districts plays a crucial role in meeting the water demands of various regions. It helps in ensuring a fair and equitable distribution of water resources, taking into account factors such as population, agricultural needs, industrial requirements, and environmental considerations.</p>
+            
+            <p>By analyzing the annual groundwater allocation, we can assess the level of water availability and utilization in different districts across the states. This analysis helps policymakers, water resource managers, and stakeholders in making informed decisions regarding water allocation, infrastructure development, and sustainable water management practices.</p>
+            
+            <p>Understanding the annual groundwater allocation to districts is essential for identifying areas with high water demands and potential areas of water stress. It enables the implementation of effective measures to optimize water allocation, improve water use efficiency, and ensure the long-term sustainability of groundwater resources.</p>
+            <form action="{{ url_for('gen_d') }}" method="post">
+            <label for="color">Select a state:</label>
+            <select name="states">
+                <option value="ANDHRA PRADESH">Andhra Pradesh</option>
+                <option value="ARUNACHAL PRADESH">Arunachal Pradesh</option>
+                <option value="ASSAM">Assam</option>
+                <option value="BIHAR">Bihar</option>
+                <option value="CHATTISGARH">Chattisgarh</option>
+                <option value="DELHI">Delhi</option>
+                <option value="GOA">Goa</option>
+                <option value="GUJARAT">Gujarat</option>
+                <option value="HARYANA">Haryana</option>
+                <option value="HIMACHAL">Himachal</option>
+                <option value="J&K">J&K</option>
+                <option value="JHARKHAND">Jharkhand</option>
+                <option value="KARNATAKA">Karnataka</option>
+                <option value="KERALA">Kerala</option>
+                <option value="MADHYAPRADESH">Madhya Pradesh</option>
+                <option value="MAHARASHTRA">Maharashtra</option>
+                <option value="MANIPUR">Manipur</option>
+                <option value="MEGHALAYA">Meghalaya</option>
+                <option value="MIZORAM">Mizoram</option>
+                <option value="NAGALAND">Nagaland</option>
+                <option value="ODISHA">Odisha</option>
+                <option value="PUNJAB">Punjab</option>
+                <option value="RAJASTHAN">Rajasthan</option>
+                <option value="SIKKIM">Sikkim</option>
+                <option value="TAMILNADU">Tamilnadu</option>
+                <option value="TELANGANA">Telangana</option>
+                <option value="TRIPURA">Tripura</option>
+                <option value="UTTARPRADESH">Uttar Pradesh</option>
+                <option value="UTTARAKHAND">Uttarakhand</option>
+                <option value="WEST BENGAL">West Bengal</option>
+                <option value="A&N ISLAND">A&N Island</option>
+                <option value="CHANDIGARH">Chandigarh</option>
+                <option value="DADRA & NAGAR HAVELI">Dadra & Nagar Haveli</option>
+                <option value="DAMAN">Daman</option>
+                <option value="DIU">Diu</option>
+                <option value="LAKSHADWEEP">Lakshadweep</option>
+                <option value="PUDUCHERRY">Puducherry</option>
+              </select>
+              <input type="submit" value="Submit" name="btn1">
+            </form>    
+        </section>
+        {% if l1 and l2 %}
+  <div class="data">
+      <h3>District Plot</h3>
+      <img src="data:image/png;base64,{{ l1 }}" alt="Plot 1">
+      <h3>State Plot</h3>
+      <img src="data:image/png;base64,{{ l2 }}" alt="Plot 1">
+  </div>
+{% endif %}
+
+      
+
+            <section class="data">
+                <h2>State-wise Groundwater Extraction Distributions</h2>
+                <p>
+                  In this section, we analyze the statistics of groundwater extraction distributions across different states. The data provides valuable insights into the varying levels of groundwater extraction and helps us understand the overall usage patterns.
+                </p>
+                <p>
+                  By examining the state-wise groundwater extraction distributions, we can identify states with higher or lower extraction rates. This information is crucial for understanding the demand and utilization of groundwater resources in different regions.
+                </p>
+                <p>
+                  The statistics include measures such as mean, median, minimum, maximum, and standard deviation of groundwater extraction for each state. These statistics provide a comprehensive overview of the extraction patterns and help us identify states with significant variations in extraction levels.
+                </p>
+                <p>
+                  Analyzing the state-wise groundwater extraction distributions allows us to gain insights into the regional disparities and potential areas of concern. It helps policymakers and stakeholders develop targeted strategies for sustainable groundwater management and conservation efforts.
+                </p>
+                <a href="{{ url_for('toggle5') }}">
+                    {% if session.get('show_plots5', False) %}
+                    <button class="button"><span class="spinner"></span>Hide Plot</button>
+                    {% else %}
+                    <button class="button"><span class="spinner"></span>Show Plot</button>
+                    {% endif %}
+                </a>
+              </section>
+              {% if session.get('show_plots5', False) %}
+            <h1>State-wise Groundwater Extraction Distributions</h1>
+            <div class="tbl-header">
+                <img src="{{ url_for('static', filename='plot5.png') }}">
+            </div>
+        {% endif %}
+              
+
+</body>
+</html>
